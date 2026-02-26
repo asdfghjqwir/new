@@ -80,17 +80,17 @@
             text-decoration: line-through;
         }
 
-        /* 物理ボタン風デザイン */
+        /* 改良版：物理ボタンデザイン（色をオレンジ・レッド系に変更） */
         .physics-button {
             display: inline-block;
             width: 100%;
-            background: var(--black);
-            color: var(--white) !important;
+            background: linear-gradient(135deg, #FF4B2B 0%, #FF416C 100%);
+            color: white !important;
             text-decoration: none !important;
             margin-top: 30px;
             padding: 25px 15px;
             border-radius: 8px;
-            box-shadow: 0 6px 0 #333;
+            box-shadow: 0 6px 0 #b32d15;
             transition: all 0.1s;
             border: none;
             cursor: pointer;
@@ -99,7 +99,7 @@
 
         .physics-button:active {
             transform: translateY(4px);
-            box-shadow: 0 2px 0 #333;
+            box-shadow: 0 2px 0 #b32d15;
         }
 
         .share-btn {
@@ -147,15 +147,15 @@
         <button style="margin-top:10px; background: #4CAF50;" onclick="saveImg()">結果を画像で保存</button>
 
         <a href="https://buy.polar.sh/polar_cl_FyzHYNE4aqqNOAHjI5txU3XuZxKruvPCvS0Mz1Qw1y1" class="physics-button">
-            <span style="font-size: 1.1rem; font-weight: 900; letter-spacing: 0.1em; display: block; margin-bottom: 15px; color: var(--yellow);">
+            <span style="font-size: 1.1rem; font-weight: 900; letter-spacing: 0.1em; display: block; margin-bottom: 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">
                 ⚠️ 禁断の「脱出ルート」を解放する ($1.00)
             </span>
             
-            <span style="font-size: 0.95rem; color: #ff4444; font-weight: 900; display: block; margin-bottom: 12px; letter-spacing: 0.05em; line-height: 1.4;">
+            <span style="font-size: 0.95rem; color: #fff; font-weight: 900; display: block; margin-bottom: 12px; letter-spacing: 0.05em; line-height: 1.4; background: rgba(0,0,0,0.15); padding: 5px; border-radius: 4px;">
                 「秘密の解決策はメールで送った。<br>心して読め。」
             </span>
             
-            <span style="font-size: 0.75rem; color: #bbb; display: block; font-weight: normal;">
+            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.9); display: block; font-weight: normal;">
                 ※決済完了後、登録アドレスに「秘密の指令」が届く。
             </span>
         </a>
