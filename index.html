@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNS依存・人生時給換算診断</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.1/html-to-image.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --yellow: #FFD700;
+            --pink: #FF007F;
+            --black: #000000;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--yellow);
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--black);
+        }
+
+        #app {
+            width: 90%;
+            max-width: 400px;
+            background: var(--white);
+            border: 4px solid var(--black);
+            box-shadow: 8px 8px 0px var(--black);
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 { font-size: 1.5rem; text-transform: uppercase; margin-bottom: 20px; border-bottom: 4px solid var(--black); padding-bottom: 10px; }
+
+        .input-group { margin-bottom: 20px; text-align: left; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 3px solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: var(--pink);
+            color: white;
+            font-weight: 900;
+            font-size: 1.2rem;
+            border: 3px solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--black); }
+
+        #loading, #result { display: none; }
+
+        .roast-card {
+            background: var(--white);
+            border: 4px solid var(--black);
+            padding: 15px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .price-tag {
+            font-size: 2rem;
+            color: var(--pink);
+            font-weight: 900;
+            text-decoration: line-through;
+        }
+
+        .forbidden-btn {
+            background: var(--black);
+            color: var(--yellow);
+            margin-top: 20px;
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+        }
+
+        .share-btn {
+            background: #1DA1F2;
+            color: white;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <div id="quiz">
+        <h1>📱 SNS依存 × 時給換算</h1>
+        <div class="input-group">
+            <label>1日のSNS利用時間は？（時間）</label>
+            <input type="number" id="snsTime" placeholder="例: 5">
+        </div>
+        <div class="input-group">
+            <label>あなたの推定月収は？（万円）</label>
+            <input type="number" id="income" placeholder="例: 30">
+        </div>
+        <button onclick="diagnose()">深層心理を解析する</button>
+    </div>
+
+    <div id="loading">
+        <h2>解析中...</h2>
+        <p>あなたの「失われた未来」を計算しています。</p>
+    </div>
+
+    <div id="result">
+        <div id="capture-area">
+            <h1>診断結果：デジタル家畜</h1>
+            <div class="roast-card">
+                <p id="roast-text"></p>
+                <hr style="border: 2px solid black">
+                <p>あなたがSNSに献上した人生の価値：</p>
+                <p id="lost-value" class="price-tag"></p>
+                <p>現在のあなたの時給換算：<br><span id="hourly-rate" style="font-size: 1.5rem; font-weight: 900;"></span></p>
+            </div>
+        </div>
+        
+        <button class="share-btn" onclick="shareX()">Xで恥を晒す</button>
+        <button style="margin-top:10px; background: #4CAF50;" onclick="saveImg()">結果を画像で保存</button>
+
+        <a href="YOUR_POLAR_SH_URL" class="forbidden-btn">
+            ⚠️ 禁断の「脱出ルート」を解放する
+        </a>
+    </div>
+</div>
+
+<script>
+    function diagnose() {
+        const snsTime = document.getElementById('snsTime').value;
+        const income = document.getElementById('income').value;
+
+        if(!snsTime || !income) { alert('数値を入力してください。現実から逃げないで。'); return; }
+
+        document.getElementById('quiz').style.display = 'none';
+        document.getElementById('loading').style.display = 'block';
+
+        setTimeout(() => {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+
+            const monthlyHours = 160; 
+            const realHourlyRate = (income * 10000) / monthlyHours;
+            const lostMoney = Math.floor(realHourlyRate * snsTime * 30);
+            
+            document.getElementById('lost-value').innerText = `¥${lostMoney.toLocaleString()}`;
+            document.getElementById('hourly-rate').innerText = `¥${Math.floor(realHourlyRate * 0.3).toLocaleString()} (家畜価格)`;
+
+            const roasts = [
+                "「いいね」を稼いでも、あなたの銀行残高は1円も増えていません。通知ドパミンに脳を焼かれた、ただの無料コンテンツ生成マシーンです。",
+                "情報の海を泳いでいるつもりですか？実際はアルゴリズムという網に掛かった動けない魚ですよ。無自覚な搾取ターゲットの鑑ですね。",
+                "スクロールする指の動きだけは一流。その指でキーボードを叩いていれば、今頃あなたは「売る側」にいたはずなのに。"
+            ];
+            document.getElementById('roast-text').innerText = roasts[Math.floor(Math.random() * roasts.length)];
+        }, 3000);
+    }
+
+    function shareX() {
+        const text = encodeURIComponent("【SNS依存・人生時給換算診断】\n私の人生、SNSに月額これだけドブに捨ててました…。AIにボコボコにされたい人はこちら。 #SNS依存診断 #デジタル家畜");
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`);
+    }
+
+    function saveImg() {
+        const node = document.getElementById('capture-area');
+        htmlToImage.toPng(node).then(dataUrl => {
+            const link = document.createElement('a');
+            link.download = 'diagnosis.png';
+            link.href = dataUrl;
+            link.click();
+        });
+    }
+</script>
+
+</body>
+</html>
