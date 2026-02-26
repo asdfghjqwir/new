@@ -80,13 +80,26 @@
             text-decoration: line-through;
         }
 
-        .forbidden-btn {
+        /* 物理ボタン風デザイン */
+        .physics-button {
+            display: inline-block;
+            width: 100%;
             background: var(--black);
-            color: var(--yellow);
-            margin-top: 20px;
-            text-decoration: none;
-            display: block;
-            padding: 15px;
+            color: var(--white) !important;
+            text-decoration: none !important;
+            margin-top: 30px;
+            padding: 25px 15px;
+            border-radius: 8px;
+            box-shadow: 0 6px 0 #333;
+            transition: all 0.1s;
+            border: none;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .physics-button:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #333;
         }
 
         .share-btn {
@@ -133,17 +146,19 @@
         <button class="share-btn" onclick="shareX()">Xで恥を晒す</button>
         <button style="margin-top:10px; background: #4CAF50;" onclick="saveImg()">結果を画像で保存</button>
 
-        <a href="https://buy.polar.sh/polar_cl_FyzHYNE4aqqNOAHjI5txU3XuZxKruvPCvS0Mz1Qw1y1" class="forbidden-btn">
-            ⚠️ 禁断の「脱出ルート」を解放する
+        <a href="https://buy.polar.sh/polar_cl_FyzHYNE4aqqNOAHjI5txU3XuZxKruvPCvS0Mz1Qw1y1" class="physics-button">
+            <span style="font-size: 1.1rem; font-weight: 900; letter-spacing: 0.1em; display: block; margin-bottom: 15px; color: var(--yellow);">
+                ⚠️ 禁断の「脱出ルート」を解放する ($1.00)
+            </span>
+            
+            <span style="font-size: 0.95rem; color: #ff4444; font-weight: 900; display: block; margin-bottom: 12px; letter-spacing: 0.05em; line-height: 1.4;">
+                「秘密の解決策はメールで送った。<br>心して読め。」
+            </span>
+            
+            <span style="font-size: 0.75rem; color: #bbb; display: block; font-weight: normal;">
+                ※決済完了後、登録アドレスに「秘密の指令」が届く。
+            </span>
         </a>
-        <p style="font-size: 0.85rem; color: #ff3333; margin-top: 15px; font-weight: bold; letter-spacing: 0.05em;">
-            「秘密の解決策はメールで送った。心して読め。」
-        </p>
-        
-        <p style="font-size: 0.7rem; color: #999; line-height: 1.4; margin-top: 10px;">
-            ※決済完了後、登録したメールアドレスに「秘密の指令」が届く。<br>
-            覚悟がある者だけ開け。
-        </p>
     </div>
 </div>
 
@@ -169,13 +184,13 @@
             document.getElementById('hourly-rate').innerText = `¥${Math.floor(realHourlyRate * 0.3).toLocaleString()} (家畜価格)`;
 
             const roasts = [
-              "「いいね」を稼いでも、あなたの銀行残高は1円も増えていません。通知ドパミンに脳を焼かれた、ただの無料コンテンツ生成マシーンです。",
+                "「いいね」を稼いでも、あなたの銀行残高は1円も増えていません。通知ドパミンに脳を焼かれた、ただの無料コンテンツ生成マシーンです。",
                 "情報の海を泳いでいるつもりですか？実際はアルゴリズムという網に掛かった動けない魚ですよ。無自覚な搾取ターゲットの鑑ですね。",
                 "スクロールする指の動きだけは一流。その指でキーボードを叩いていれば、今頃あなたは「売る側」にいたはずなのに。",
                 "あなたが『無料』でSNSを楽しんでいる時、支払っている対価は『人生の時間』そのものです。シリコンバレーへの献金、ご苦労様です。",
                 "画面の向こう側の成功者を見て満足ですか？彼らはあなたのような『観客』がいるおかげで、今日も高級車を乗り回していますよ。",
                 "最新のトレンドを追っているつもりで、実は古いアルゴリズムのレールの上を歩かされているだけ。あなたの思考、賞味期限切れですよ？",
-                "スマホのバッテリー残量には敏感なのに、自分の人生の残り時間には無頓着なんですね。優先順位、バグってませんか？",
+                "スマホのバッテリー残量には敏感なのに、自分の人生の残り時間には無論着なんですね。優先順位、バグってませんか？",
                 "その『暇つぶし』、実は人生そのものを潰していることにいつ気付くんでしょうか。もう手遅れかもしれませんが。",
                 "SNSを開くたびに、あなたの脳の一部が広告配信最適化のために切り売りされています。人間をやめて、ただの『データ』になりたいんですか？",
                 "他人のランチや旅行の写真を見て、何が手に入りましたか？あなたの手元に残ったのは、虚無感と熱くなったスマホだけです。",
